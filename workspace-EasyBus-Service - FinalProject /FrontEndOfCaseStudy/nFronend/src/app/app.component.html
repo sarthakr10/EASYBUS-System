@@ -1,0 +1,27 @@
+<div>
+  <nav class="navbar" *ngIf="isNavBarVisible">
+    <div class="navbar-brand">
+      <a href="#">Bus Booking</a>
+    </div>
+    <ul class="navbar-menu">
+      <li><a href="#">Home</a></li>
+      <li><a [routerLink]="['/showAll']">My Bookings</a></li>
+      <li><a [routerLink]="['/about']">About-Us</a></li>
+      <li><a [routerLink]="['/contact']">Contact-Us</a></li>
+    </ul>
+    @if (!navbarInit()) {
+    <div *ngIf="token === '' || token === null" class="navbar-login">
+      <a [routerLink]="['/login']">Login</a>
+    </div>
+    } @if(navbarInit()){
+
+    <div class="navbar-login">
+      <a (click)="logout()" [routerLink]="['/login']">Logout {{ username }}</a>
+    </div>
+
+    }
+  </nav>
+  <body>
+    <router-outlet></router-outlet>
+  </body>
+</div>

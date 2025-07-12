@@ -1,0 +1,46 @@
+<div class="bus-details">
+  <h1>Available Buses</h1>
+  <div class="bus-list-container">
+    <div *ngIf="bus && bus.length > 0; else noBuses" class="row">
+      <div *ngFor="let b of bus" class="col-lg-4 col-md-6 mb-4">
+        <div class="bus-item">
+          <h2>{{ b.busName }}</h2>
+          <p><strong>Type:</strong> {{ b.busType }}</p>
+          <p><strong>Source:</strong> {{ b.busSource }}</p>
+          <p><strong>Destination:</strong> {{ b.busDestination }}</p>
+          <p><strong>Date:</strong> {{ b.busDate }}</p>
+          <p>
+            <strong>Departure:</strong> {{ b.departureFromSource }} -
+            {{ b.arrivalOnDestination }}
+          </p>
+          <p>
+            <strong>Duration:</strong>
+            {{ b.busDuration | number : "1.2-2" }} hours
+          </p>
+          <p>
+            <strong>Sitting Seats Available:</strong>
+            {{ b.typeSittingCapacity }}
+          </p>
+          <p>
+            <strong>Sleeper Seats Available:</strong>
+            {{ b.typeSleeperCapacity }}
+          </p>
+          <p>
+            <strong>Sitting Price:</strong>
+            {{ b.priceSitting | number : "1.2-2" }}
+          </p>
+          <p>
+            <strong>Sleeper Price:</strong>
+            {{ b.priceSleeper | number : "1.2-2" }}
+          </p>
+          <button class="book-button" (click)="bookBus(b, $event)">
+            Book Now
+          </button>
+        </div>
+      </div>
+    </div>
+    <ng-template #noBuses>
+      <p>No buses found for the selected route and date.</p>
+    </ng-template>
+  </div>
+</div>

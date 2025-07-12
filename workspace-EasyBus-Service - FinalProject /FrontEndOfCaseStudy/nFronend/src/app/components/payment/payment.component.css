@@ -1,0 +1,33 @@
+.booking-details {
+  width: 25%;
+  background-color: #004080; /* Matching color from your navbar */
+  color: white; /* Text color */
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Adds shadow */
+}
+
+.booking-details h3 {
+  color: white; /* Heading color */
+  border-bottom: 1px solid #ffffff; /* Border color for the heading */
+  padding-bottom: 10px;
+}
+
+.booking-details p {
+  margin-bottom: 10px;
+}
+
+.booking-details button {
+  background-color: #ffcc00; /* Button background color */
+  color: #004080; /* Button text color */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.booking-details button:hover {
+  background-color: #e6b800; /* Darker shade for hover */
+}

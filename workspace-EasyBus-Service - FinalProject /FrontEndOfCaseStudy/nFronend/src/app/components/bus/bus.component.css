@@ -1,0 +1,61 @@
+.bus-details {
+  max-width: 1200px; /* Adjust as needed */
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.bus-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.bus-item {
+  flex: 0 1 calc(33% - 20px); /* Each bus item takes up 33% of the container width with some margin */
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bus-item h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.bus-item p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.book-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.book-button:hover {
+  background-color: #45a049;
+}
+
+.filter-container {
+  top: 50%;
+  left: 50%;
+  transform: translate(85%, 30%);
+}

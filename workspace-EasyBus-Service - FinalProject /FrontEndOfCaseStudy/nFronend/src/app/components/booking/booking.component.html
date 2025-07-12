@@ -1,0 +1,180 @@
+<div class="container-fluid">
+  <div class="row">
+    <!-- Left side: Bus Information and Passenger Form -->
+    <div class="col-md-6">
+      <div class="bus-info">
+        <h3>Bus Information</h3>
+        <p><strong>Bus Name:</strong> {{ busDetails.busName }}</p>
+        <p><strong>Bus Type:</strong> {{ busDetails.busType }}</p>
+        <p>
+          <strong>Source:</strong> {{ busDetails.busSource }} -
+          <strong>Destination:</strong> {{ busDetails.busDestination }}
+        </p>
+
+        <p>
+          <strong>Sitting Vacant Seats: </strong
+          >{{ busDetails.typeSittingCapacity }},
+          <strong>Sleeper Vacant Seats: </strong
+          >{{ busDetails.typeSleeperCapacity }}
+        </p>
+        <div>
+          <label for="bookingSeats">Enter Seats to book</label>
+          <input
+            type="number"
+            id="totalSeats"
+            placeholder="Enter number of seats to book"
+            [(ngModel)]="numBookings"
+            min="0"
+          />
+        </div>
+        <button class="btn btn-primary mt-3" (click)="showPassengerForm()">
+          Add Passenger
+        </button>
+        <button
+          class="btn btn-success mt-3"
+          [disabled]="passengers.length === 0"
+          (click)="bookBus()"
+        >
+          Complete booking
+        </button>
+      </div>
+    </div>
+
+    <!-- Right side: Add Passenger Form -->
+    <div class="col-md-6" *ngIf="isPassengerFormVisible">
+      <div class="add-passenger-form">
+        <h3>Add Passenger</h3>
+        <form #passengerForm="ngForm" (ngSubmit)="onSubmit(passengerForm)">
+          <div>
+            <label for="name">Name</label>
+            <input
+              type="text"
+              id="name"
+              [(ngModel)]="newPassenger.passengerName"
+              name="name"
+              required
+            />
+            <div
+              *ngIf="
+                passengerForm.submitted &&
+                passengerForm.controls['name']?.invalid
+              "
+              class="text-danger"
+            >
+              Name is required.
+            </div>
+          </div>
+          <div>
+            <label for="age">Age</label>
+            <input
+              type="number"
+              id="age"
+              [(ngModel)]="newPassenger.passengerAge"
+              name="age"
+              required
+              min="5"
+            />
+            <div
+              *ngIf="
+                passengerForm.submitted &&
+                passengerForm.controls['age']?.invalid
+              "
+              class="text-danger"
+            >
+              Age is required and must be greater than 4.
+            </div>
+          </div>
+          <div>
+            <label for="gender">Gender</label>
+            <select
+              id="gender"
+              [(ngModel)]="newPassenger.passengerGender"
+              name="gender"
+              required
+            >
+              <option value="" disabled>Select Gender</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
+            <div
+              *ngIf="
+                passengerForm.submitted &&
+                passengerForm.controls['gender']?.invalid
+              "
+              class="text-danger"
+            >
+              Gender is required.
+            </div>
+          </div>
+          <div>
+            <label for="phoneNumber">Phone Number</label>
+            <input
+              type="text"
+              id="phoneNumber"
+              [(ngModel)]="newPassenger.passengerPhoneNumber"
+              name="phoneNumber"
+              required
+            />
+            <div
+              *ngIf="
+                passengerForm.submitted &&
+                passengerForm.controls['phoneNumber']?.invalid
+              "
+              class="text-danger"
+            >
+              Phone number is required.
+            </div>
+          </div>
+          <div>
+            <label for="seatPreference">Seat Preference</label>
+            <select
+              id="seatPreference"
+              [(ngModel)]="newPassenger.passengerPrefrence"
+              name="seatPreference"
+              required
+            >
+              <option value="" disabled>Select Seat Preference</option>
+              <option
+                value="Sitting"
+                [disabled]="busDetails.typeSittingCapacity <= numOfSittingSeats"
+              >
+                Sitting
+              </option>
+              <option
+                value="Sleeper"
+                [disabled]="busDetails.typeSleeperCapacity <= numOfSleeperSeats"
+              >
+                Sleeper
+              </option>
+            </select>
+            <div
+              *ngIf="
+                passengerForm.submitted &&
+                passengerForm.controls['seatPreference']?.invalid
+              "
+              class="text-danger"
+            >
+              Seat preference is required.
+            </div>
+          </div>
+          <button class="btn btn-success mt-3" type="submit">
+            Add Passenger
+          </button>
+        </form>
+      </div>
+      <!-- Dynamic Passenger List -->
+      <div class="passenger-list mt-4">
+        <h3>Passengers</h3>
+        <div *ngFor="let passenger of passengers">
+          <p>
+            Name: {{ passenger.passengerName }} | Age:
+            {{ passenger.passengerAge }} | Gender:
+            {{ passenger.passengerGender }} | Preference:
+            {{ passenger.passengerPrefrence }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,138 @@
+.search-box {
+  width: 35%;
+  background-color: #004080; /* Match navbar background color */
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 60px; /* Adding space from the top */
+  color: white; /* Text color */
+}
+
+.bus-animation {
+  position: relative;
+  display: inline-block;
+}
+.holder {
+  background-color: #ffcc00 !important;
+}
+.bus {
+  display: inline-block;
+  font-size: 2rem;
+  animation: vibrate 0.1s infinite linear;
+}
+
+.smoke {
+  position: absolute;
+  top: 0;
+  left: -2rem;
+  font-size: 2rem;
+  animation: smoke 1s infinite linear;
+}
+
+@keyframes vibrate {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(1px, -1px);
+  }
+  50% {
+    transform: translate(0, 1px);
+  }
+  75% {
+    transform: translate(-1px, -1px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+.busses,
+.smoke {
+  width: 25px;
+}
+.smoke {
+  padding-top: 10px;
+}
+@keyframes smoke {
+  0% {
+    left: -2rem;
+    opacity: 1;
+  }
+  50% {
+    left: -4rem;
+    opacity: 0.5;
+  }
+  100% {
+    left: -6rem;
+    opacity: 0;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: url("https://wallpapercave.com/wp/wp12516713.jpg") no-repeat center
+    center fixed;
+  background-size: cover;
+  background-position: center;
+  color: white; /* Ensure text is readable on the background image */
+  height: 100vh; /* Ensure the body takes up the full viewport height */
+  overflow: hidden;
+}
+
+.search-box h2 {
+  margin-top: 0;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#bus-search-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"] {
+  width: calc(100% - 20px);
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white; /* Input field background color */
+  color: #004080; /* Input field text color */
+}
+.list-group-item {
+  width: calc(100% - 20px);
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.list-group-item:hover {
+  background-color: #ffcc00;
+}
+button[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffcc00; /* Button background color */
+  color: #004080; /* Button text color */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #ffd633; /* Button hover background color */
+}

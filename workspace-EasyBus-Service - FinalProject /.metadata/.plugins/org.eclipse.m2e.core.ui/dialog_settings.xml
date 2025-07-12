@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectImportWizardPage">
+		<list key="rootDirectory">
+			<item value="/Users/Sarthak/Desktop/STS-work/workspace-EasyBus-Service - FinalProject /Eureka-Server"/>
+			<item value="/Users/Sarthak/Desktop/STS-work/workspace-EasyBus-Service - FinalProject /ApiGateway"/>
+			<item value="/Users/Sarthak/Desktop/STS-work/workspace-EasyBus-Service - FinalProject /ContactUs-Service"/>
+			<item value="/Users/Sarthak/Desktop/STS-work/workspace-EasyBus-Service - FinalProject /PaymentService"/>
+			<item value="/Users/Sarthak/Desktop/STS-work/workspace-EasyBus-Service - FinalProject /Passenger"/>
+			<item value="/Users/Sarthak/Desktop/STS-work/workspace-EasyBus-Service - FinalProject /LoginRegistrationService"/>
+			<item value="/Users/Sarthak/Desktop/STS-work/workspace-EasyBus-Service - FinalProject /EasyBus-Service"/>
+			<item value="/Users/Sarthak/Desktop/STS-work/workspace-EasyBus-Service - FinalProject /Booking-Service"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+</section>

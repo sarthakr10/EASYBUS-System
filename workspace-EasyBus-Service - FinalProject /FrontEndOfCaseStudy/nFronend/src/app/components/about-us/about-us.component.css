@@ -1,0 +1,73 @@
+.about-us {
+  font-family: "Arial", sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.header {
+  text-align: center;
+  background-color: #003366;
+  color: #ffffff;
+  padding: 20px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2.5em;
+}
+
+.header p {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section .image {
+  flex: 1;
+  max-width: 400px;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+.section .text {
+  flex: 2;
+  margin: 10px;
+}
+
+.section h2 {
+  margin-top: 0;
+  color: #003366;
+}
+
+.section p,
+.section ul {
+  color: #333333;
+  font-size: 1.1em;
+}
+
+.section ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.section ul li {
+  padding-left: 30px;
+  margin-bottom: 10px;
+}

@@ -1,0 +1,15 @@
+<div class="booking-details">
+  <h3>Booking Details</h3>
+  <p><strong>Booking ID:</strong> {{ booking.busId }}</p>
+  <p><strong>Number of Bookings :</strong> {{ booking.noOfBookings }}</p>
+  <p>
+    <strong>Sleeper Seats Booked:</strong> {{ booking.typeSleeperCapacity }}
+  </p>
+  <p>
+    <strong>Sitting Seats Booked:</strong> {{ booking.typeSittingCapacity }}
+  </p>
+  <p>
+    <strong>Total Amount:</strong> {{ totalBookingCost | number : "1.2-2" }}
+  </p>
+  <button class="btn btn-success mt-3" (click)="bookBus()">Pay Now</button>
+</div>

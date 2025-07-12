@@ -1,0 +1,153 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f3e8ff;
+}
+
+section {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(135deg, #fceff9 0%, #e9defa 100%);
+}
+
+/* Removed span background tiles */
+
+section .signin {
+  position: absolute;
+  width: 420px;
+  background: #fff;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+section .signin .content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 32px;
+}
+
+section .signin .content h2 {
+  font-size: 2em;
+  color: #6a1b9a;
+  text-transform: uppercase;
+}
+
+section .signin .content .form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+section .signin .content .form .inputBox {
+  position: relative;
+  width: 100%;
+}
+
+section .signin .content .form .inputBox input {
+  width: 100%;
+  background: #f5f3fa;
+  border: 2px solid #ddd;
+  padding: 16px 12px;
+  border-radius: 10px;
+  color: #333;
+  font-size: 1em;
+  transition: border-color 0.3s;
+}
+
+section .signin .content .form .inputBox input:focus {
+  border-color: #ab47bc;
+  outline: none;
+}
+
+section .signin .content .form .inputBox i {
+  position: absolute;
+  left: 12px;
+  top: 14px;
+  font-style: normal;
+  color: #888;
+  pointer-events: none;
+  transition: 0.4s;
+}
+
+.inputBox input:focus ~ i,
+.inputBox input:valid ~ i {
+  transform: translateY(-20px);
+  font-size: 0.8em;
+  color: #6a1b9a;
+}
+
+.signin .content .form .links {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+}
+
+.signin .content .form .links a {
+  text-decoration: none;
+  color: #7e57c2;
+}
+
+.signin .content .form .links a:nth-child(2) {
+  font-weight: bold;
+}
+
+input[type="submit"] {
+  background: linear-gradient(to right, #ab47bc, #8e24aa);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background: linear-gradient(to right, #8e24aa, #6a1b9a);
+}
+
+.error {
+  color: #d90429;
+  font-size: 0.85em;
+  margin-top: 4px;
+  padding-left: 4px;
+}
+
+/* Keep the span media queries in case you re-add spans */
+@media (max-width: 900px) {
+  section span {
+    width: calc(10vw - 2px);
+    height: calc(10vw - 2px);
+  }
+}
+@media (max-width: 600px) {
+  section span {
+    width: calc(20vw - 2px);
+    height: calc(20vw - 2px);
+  }
+}

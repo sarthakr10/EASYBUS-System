@@ -1,0 +1,234 @@
+.bdy {
+  height: 100vh;
+  background-image: url("../../../assets/bus.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100vh; /* Ensure full height of viewport */
+  margin: 0; /* Remove default margin */
+  font-family: Arial, sans-serif; /* Adjust font if needed */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #004080;
+  color: #004080;
+  padding: 10px 20px;
+  color: white;
+}
+
+.nav-link {
+  cursor: pointer;
+}
+
+.navbar-brand {
+  color: white;
+  text-decoration: none;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar-menu li {
+  margin: 0 15px;
+}
+
+.navbar-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s ease;
+}
+
+.navbar-menu a:hover {
+  color: #e9edf0;
+}
+
+.navbar-login a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 5px 10px;
+  border: 1px solid white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-login a:hover {
+  background-color: white;
+  color: #004080;
+}
+
+/* Additional Styles */
+
+.vh-100 {
+  height: 100vh;
+}
+
+.container-fluid {
+  padding-top: 20px; /* Adjust as needed */
+  background-color: #f0f0f0; /* Background color for the container */
+}
+
+.bg-white {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px; /* Rounded corners for the form */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Optional: Add shadow */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Spacing between form groups */
+}
+
+.btn-dark {
+  background-color: #004080; /* Button color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.btn-dark:hover {
+  background-color: #002f5e; /* Darker shade for hover effect */
+  color: white;
+}
+
+/* Input field styling */
+.form-control {
+  border: 1px solid #ced4da; /* Border color */
+  border-radius: 5px; /* Rounded corners for input fields */
+}
+
+.form-control:focus {
+  border-color: #004080; /* Focus color */
+  box-shadow: 0 0 0 0.2rem rgba(0, 64, 128, 0.25); /* Focus shadow */
+}
+.bus-details {
+  max-width: 1000px; /* Adjust as needed */
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.bus-list-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.bus-item {
+  flex: 0 1 calc(33% - 20px); /* Each bus item takes up 33% of the container width with some margin */
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.bus-item h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.bus-item p {
+  margin: 5px 0;
+  color: #666;
+}
+
+.book-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.book-button:hover {
+  background-color: #45a049;
+}
+
+.row-cols-1 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px; /* Adjust according to your grid gutter */
+  margin-left: -15px; /* Adjust according to your grid gutter */
+}
+
+.row-cols-1 .col {
+  padding-right: 15px; /* Adjust according to your grid gutter */
+  padding-left: 15px; /* Adjust according to your grid gutter */
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 576px) {
+  .row-cols-md-2 .col {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .row-cols-lg-4 .col {
+    flex: 0 0 25%;
+    max-width: 25%;
+  }
+}
+
+.card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.card-text {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}

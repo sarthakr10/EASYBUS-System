@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+body, html {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top left, #d0bfff, #a0c4ff, #bdb2ff);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+section {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section .signin {
+  width: 420px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  z-index: 10;
+}
+
+.signin .content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+}
+
+.signin .content h2 {
+  font-size: 2em;
+  color: #2b2d42;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputBox {
+  position: relative;
+  width: 100%;
+}
+
+.inputBox input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #f8f9fa;
+  font-size: 1em;
+  color: #333;
+  transition: border-color 0.3s ease;
+}
+
+.inputBox input:focus {
+  border-color: #7b2cbf;
+  outline: none;
+}
+
+.inputBox i {
+  position: absolute;
+  top: 14px;
+  left: 10px;
+  color: #aaa;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.inputBox input:focus ~ i,
+.inputBox input:valid ~ i {
+  transform: translateY(-22px);
+  font-size: 0.8em;
+  color: #7b2cbf;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9em;
+}
+
+.links a {
+  text-decoration: none;
+  color: #5f27cd;
+}
+
+input[type="submit"] {
+  background: #7b2cbf;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1.1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+input[type="submit"]:hover {
+  background: #5f0f99;
+}

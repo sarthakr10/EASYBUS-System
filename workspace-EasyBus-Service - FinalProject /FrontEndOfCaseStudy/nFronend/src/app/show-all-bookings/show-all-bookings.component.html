@@ -1,0 +1,36 @@
+<div *ngFor="let binded of bindedList" class="card booking-card mb-3">
+  <div class="card-body">
+    <h5 class="card-title">Booking ID: {{ binded.booking.bookingId }}</h5>
+    <p class="card-text">
+      <strong>Bus Name:</strong> {{ binded.bus.busName }} ||
+      <strong>Bus Type:</strong> {{ binded.bus.busType }} ||
+      <strong>Number of Bookings:</strong> {{ binded.booking.noOfBookings }} ||
+      <strong>Sleeper Seats Booked:</strong>
+      {{ binded.booking.typeSleeperCapacity }} ||
+      <strong>Sitting Seats Booked:</strong>
+      {{ binded.booking.typeSittingCapacity }} ||
+      <strong>Refund Amount:</strong> {{ binded.booking.refund }}
+    </p>
+    <h6 class="card-subtitle mb-2 text-muted mt-3">Passenger Details</h6>
+    <div class="passenger-details">
+      <div
+        *ngFor="let passenger of binded.booking.passengerList; let i = index"
+        class="passenger"
+      >
+        <div class="passenger-info">
+          <p>
+            <strong>Passenger {{ i + 1 }}:</strong>
+            {{ passenger.passengerName }} ({{ passenger.passengerAge }} years)
+            <strong>Preference:</strong> {{ passenger.passengerPrefrence }}
+          </p>
+        </div>
+        <button
+          class="btn btn-danger"
+          (click)="deletePassenger(binded.bus.busId, passenger.passengerId)"
+        >
+          Delete
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

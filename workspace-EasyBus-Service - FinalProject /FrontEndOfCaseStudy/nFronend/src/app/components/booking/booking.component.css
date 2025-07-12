@@ -1,0 +1,114 @@
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2; /* Light gray background */
+}
+
+.container-fluid {
+  padding: 20px;
+}
+
+.row {
+  margin-bottom: 20px;
+}
+
+/* Left side: Bus Information and Passenger Form */
+.col-md-6 {
+  display: flex;
+  flex-direction: column;
+}
+
+.bus-info {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.bus-info h3 {
+  margin-top: 0;
+}
+
+.bus-info p {
+  margin-bottom: 10px;
+}
+
+.bus-info label {
+  font-weight: bold;
+}
+
+.bus-info input,
+.bus-info select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.bus-info button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #004080; /* Dark blue */
+  color: white;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+.bus-info button:hover {
+  background-color: #ffcc00; /* Yellow */
+}
+
+/* Right side: Add Passenger Form */
+.add-passenger-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.add-passenger-form h3 {
+  margin-top: 0;
+}
+
+.add-passenger-form label {
+  font-weight: bold;
+}
+
+.add-passenger-form input,
+.add-passenger-form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.passenger-list {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.passenger-list h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.passenger-list p {
+  margin-bottom: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .col-md-6 {
+    width: 100%;
+  }
+}

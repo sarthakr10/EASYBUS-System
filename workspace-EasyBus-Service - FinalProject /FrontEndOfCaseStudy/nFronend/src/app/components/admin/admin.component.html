@@ -1,0 +1,875 @@
+<div class="bdy">
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">Admin Dashboard</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" (click)="addBus()">Add Bus</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="showAllBuses()">Show All Buses</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="updateBus()">Update Bus</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="showAllBookings()"
+              >Show All Bookings</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link position-absolute top-50 end-0 translate-middle"
+              href="#"
+              (click)="logout()"
+              >Logout {{ userName }}</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid" *ngIf="isAddBusFormVisible">
+    <div class="row">
+      <div class="col-12 mt-4">
+        <!-- Main content area -->
+        <div class="bg-white p-4 rounded">
+          <form (ngSubmit)="onSubmit()" #addBusForm="ngForm">
+            <div class="row">
+              <div class="col-md-6">
+                <!-- Bus ID Field -->
+                <div class="form-group">
+                  <label for="busId">Bus ID</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm"
+                    id="busId"
+                    [(ngModel)]="bus.busId"
+                    name="busId"
+                    required
+                    #busId="ngModel"
+                  />
+                  <div
+                    *ngIf="busId.invalid && (busId.dirty || busId.touched)"
+                    class="text-danger"
+                  >
+                    <div *ngIf="busId.errors?.['required']">
+                      Bus ID is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bus Name Field -->
+                <div class="form-group">
+                  <label for="busName">Bus Name</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    id="busName"
+                    [(ngModel)]="bus.busName"
+                    name="busName"
+                    required
+                    #busName="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      busName.invalid && (busName.dirty || busName.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="busName.errors?.['required']">
+                      Bus Name is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bus Type Field -->
+                <div class="form-group">
+                  <label for="busType">Bus Type (AC/NON AC)</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    id="busType"
+                    [(ngModel)]="bus.busType"
+                    name="busType"
+                    required
+                    #busType="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      busType.invalid && (busType.dirty || busType.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="busType.errors?.['required']">
+                      Bus Type is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Source Field -->
+                <div class="form-group">
+                  <label for="source">Source</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    id="source"
+                    [(ngModel)]="bus.busSource"
+                    name="source"
+                    required
+                    #source="ngModel"
+                  />
+                  <div
+                    *ngIf="source.invalid && (source.dirty || source.touched)"
+                    class="text-danger"
+                  >
+                    <div *ngIf="source.errors?.['required']">
+                      Source is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Destination Field -->
+                <div class="form-group">
+                  <label for="destination">Destination</label>
+                  <input
+                    type="text"
+                    class="form-control form-control-sm"
+                    id="destination"
+                    [(ngModel)]="bus.busDestination"
+                    name="destination"
+                    required
+                    #destination="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      destination.invalid &&
+                      (destination.dirty || destination.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="destination.errors?.['required']">
+                      Destination is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Duration Field -->
+                <div class="form-group">
+                  <label for="duration">Duration (hours)</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm"
+                    id="duration"
+                    [(ngModel)]="bus.busDuration"
+                    name="duration"
+                    required
+                    min="1"
+                    #duration="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      duration.invalid && (duration.dirty || duration.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="duration.errors?.['required']">
+                      Duration is required.
+                    </div>
+                    <div *ngIf="duration.errors?.['min']">
+                      Duration must be greater than zero.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bus Date Field -->
+                <div class="form-group">
+                  <label for="busDate">Bus Date</label>
+                  <input
+                    type="date"
+                    class="form-control form-control-sm"
+                    id="busDate"
+                    [(ngModel)]="bus.busDate"
+                    name="busDate"
+                    required
+                    #busDate="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      busDate.invalid && (busDate.dirty || busDate.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="busDate.errors?.['required']">
+                      Bus Date is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <!-- Available Seats Field -->
+                <div class="form-group">
+                  <label for="availableSeats">Available Seats</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm"
+                    id="availableSeats"
+                    [(ngModel)]="bus.sittingCapacity"
+                    name="availableSeats"
+                    required
+                    #availableSeats="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      availableSeats.invalid &&
+                      (availableSeats.dirty || availableSeats.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="availableSeats.errors?.['required']">
+                      Available Seats is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sitting Class Seats Field -->
+                <div class="form-group">
+                  <label for="sittingSeats">Sitting Class Seats</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm"
+                    id="sittingSeats"
+                    [(ngModel)]="bus.typeSittingCapacity"
+                    name="sittingSeats"
+                    required
+                    #sittingSeats="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      sittingSeats.invalid &&
+                      (sittingSeats.dirty || sittingSeats.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="sittingSeats.errors?.['required']">
+                      Sitting Class Seats is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sleeper Class Seats Field -->
+                <div class="form-group">
+                  <label for="sleeperSeats">Sleeper Class Seats</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm"
+                    id="sleeperSeats"
+                    [(ngModel)]="bus.typeSleeperCapacity"
+                    name="sleeperSeats"
+                    required
+                    #sleeperSeats="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      sleeperSeats.invalid &&
+                      (sleeperSeats.dirty || sleeperSeats.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="sleeperSeats.errors?.['required']">
+                      Sleeper Class Seats is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sitting Class Price Field -->
+                <div class="form-group">
+                  <label for="economyPrice">Sitting Class Price</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm"
+                    id="economyPrice"
+                    [(ngModel)]="bus.priceSitting"
+                    name="economyPrice"
+                    required
+                    #economyPrice="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      economyPrice.invalid &&
+                      (economyPrice.dirty || economyPrice.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="economyPrice.errors?.['required']">
+                      Sitting Class Price is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Sleeper Class Price Field -->
+                <div class="form-group">
+                  <label for="sleeperPrice">Sleeper Class Price</label>
+                  <input
+                    type="number"
+                    class="form-control form-control-sm"
+                    id="sleeperPrice"
+                    [(ngModel)]="bus.priceSleeper"
+                    name="sleeperPrice"
+                    required
+                    #sleeperPrice="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      sleeperPrice.invalid &&
+                      (sleeperPrice.dirty || sleeperPrice.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="sleeperPrice.errors?.['required']">
+                      Sleeper Class Price is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Departure Time Field -->
+                <div class="form-group">
+                  <label for="departure">Departure Time</label>
+                  <input
+                    type="time"
+                    class="form-control form-control-sm"
+                    id="departure"
+                    [(ngModel)]="bus.departureFromSource"
+                    name="departure"
+                    required
+                    #departure="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      departure.invalid &&
+                      (departure.dirty || departure.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="departure.errors?.['required']">
+                      Departure Time is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Arrival Time Field -->
+                <div class="form-group">
+                  <label for="arrival">Arrival Time</label>
+                  <input
+                    type="time"
+                    class="form-control form-control-sm"
+                    id="arrival"
+                    [(ngModel)]="bus.arrivalOnDestination"
+                    name="arrival"
+                    required
+                    #arrival="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      arrival.invalid && (arrival.dirty || arrival.touched)
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="arrival.errors?.['required']">
+                      Arrival Time is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-dark mt-3"
+              [disabled]="addBusForm.invalid"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" *ngIf="isBusDetailsVisible">
+    <div class="row">
+      <div class="col-12">
+        <h1>Available Buses</h1>
+
+        <!-- Filter Buttons -->
+        <div class="d-flex justify-content-end mb-3">
+          <button class="btn btn-dark mr-2" (click)="filterBuses(false)">
+            Show All Buses
+          </button>
+          <button class="btn btn-dark" (click)="filterBuses(true)">
+            Show Future Buses
+          </button>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+          <!-- Loop through each bus in filteredBuses -->
+          <div class="col mb-4" *ngFor="let bus of filteredBuses">
+            <div class="card">
+              <div class="card-body">
+                <h2>{{ bus.busName }}</h2>
+                <p><strong>Type:</strong> {{ bus.busType }}</p>
+                <p><strong>Source:</strong> {{ bus.busSource }}</p>
+                <p><strong>Destination:</strong> {{ bus.busDestination }}</p>
+                <p><strong>Date:</strong> {{ bus.busDate }}</p>
+                <p>
+                  <strong>Timings:</strong> {{ bus.departureFromSource }} -
+                  {{ bus.arrivalOnDestination }}
+                </p>
+                <p>
+                  <strong>Duration:</strong>
+                  {{ bus.busDuration | number : "1.2-2" }} hours
+                </p>
+                <p>
+                  <strong>Sitting Seats Available:</strong>
+                  {{ bus.typeSittingCapacity }}
+                </p>
+                <p>
+                  <strong>Sleeper Seats Available:</strong>
+                  {{ bus.typeSleeperCapacity }}
+                </p>
+                <p>
+                  <strong>Sitting Price:</strong>
+                  {{ bus.priceSitting | number : "1.2-2" }}
+                </p>
+                <p>
+                  <strong>Sleeper Price:</strong>
+                  {{ bus.priceSleeper | number : "1.2-2" }}
+                </p>
+                <button
+                  class="btn btn-primary"
+                  (click)="editBusDetails(bus.busId)"
+                >
+                  Update Bus
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Loop ends here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" *ngIf="isUpdateFormVisible">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header align-items-center justify-content-center">
+          <h5 class="modal-title">Update Bus Details</h5>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onUpdate()" #updateBusForm="ngForm">
+            <div class="row">
+              <div class="col-md-6">
+                <!-- Bus ID Field -->
+                <div class="form-group">
+                  <label for="busId">Bus ID</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="busId"
+                    [(ngModel)]="bus.busId"
+                    name="busId"
+                    [required]="true"
+                    #busId="ngModel"
+                  />
+                  <div
+                    *ngIf="busId.invalid && busId.touched"
+                    class="text-danger"
+                  >
+                    <div *ngIf="busId.errors?.['required']">
+                      Bus ID is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bus Name Field -->
+                <div class="form-group">
+                  <label for="busName">Bus Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="busName"
+                    [(ngModel)]="bus.busName"
+                    name="busName"
+                    [required]="true"
+                    #busName="ngModel"
+                  />
+                  <div
+                    *ngIf="busName.invalid && busName.touched"
+                    class="text-danger"
+                  >
+                    <div *ngIf="busName.errors?.['required']">
+                      Bus Name is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bus Type Field -->
+                <div class="form-group">
+                  <label for="busType">Bus Type (AC/NON AC)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="busType"
+                    [(ngModel)]="bus.busType"
+                    name="busType"
+                    [required]="true"
+                    #busType="ngModel"
+                  />
+                  <div
+                    *ngIf="busType.invalid && busType.touched"
+                    class="text-danger"
+                  >
+                    <div *ngIf="busType.errors?.['required']">
+                      Bus Type is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bus Source Field -->
+                <div class="form-group">
+                  <label for="busSource">Source</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="busSource"
+                    [(ngModel)]="bus.busSource"
+                    name="busSource"
+                    [required]="true"
+                    #busSource="ngModel"
+                  />
+                  <div
+                    *ngIf="busSource.invalid && busSource.touched"
+                    class="text-danger"
+                  >
+                    <div *ngIf="busSource.errors?.['required']">
+                      Source is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bus Destination Field -->
+                <div class="form-group">
+                  <label for="busDestination">Destination</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="busDestination"
+                    [(ngModel)]="bus.busDestination"
+                    name="busDestination"
+                    [required]="true"
+                    #busDestination="ngModel"
+                  />
+                  <div
+                    *ngIf="busDestination.invalid && busDestination.touched"
+                    class="text-danger"
+                  >
+                    <div *ngIf="busDestination.errors?.['required']">
+                      Destination is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bus Duration Field -->
+                <div class="form-group">
+                  <label for="busDuration">Duration (hours)</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="busDuration"
+                    [(ngModel)]="bus.busDuration"
+                    name="busDuration"
+                    [required]="true"
+                    min="1"
+                    #busDuration="ngModel"
+                  />
+                  <div
+                    *ngIf="busDuration.invalid && busDuration.touched"
+                    class="text-danger"
+                  >
+                    <div *ngIf="busDuration.errors?.['required']">
+                      Duration is required.
+                    </div>
+                    <div *ngIf="busDuration.errors?.['min']">
+                      Duration must be greater than zero.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Bus Date Field -->
+                <div class="form-group">
+                  <label for="busDate">Bus Date</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="busDate"
+                    [(ngModel)]="bus.busDate"
+                    name="busDate"
+                    [required]="true"
+                    #busDate="ngModel"
+                  />
+                  <div
+                    *ngIf="busDate.invalid && busDate.touched"
+                    class="text-danger"
+                  >
+                    <div *ngIf="busDate.errors?.['required']">
+                      Bus Date is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <!-- Sitting Capacity Field -->
+                <div class="form-group">
+                  <label for="sittingCapacity">Available Seats</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="sittingCapacity"
+                    [(ngModel)]="bus.sittingCapacity"
+                    name="sittingCapacity"
+                    [required]="true"
+                    #sittingCapacity="ngModel"
+                  />
+                  <div
+                    *ngIf="sittingCapacity.invalid && sittingCapacity.touched"
+                    class="text-danger"
+                  >
+                    <div *ngIf="sittingCapacity.errors?.['required']">
+                      Available Seats is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Type Sitting Capacity Field -->
+                <div class="form-group">
+                  <label for="typeSittingCapacity">Sitting Class Seats</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="typeSittingCapacity"
+                    [(ngModel)]="bus.typeSittingCapacity"
+                    name="typeSittingCapacity"
+                    [required]="true"
+                    #typeSittingCapacity="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      typeSittingCapacity.invalid && typeSittingCapacity.touched
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="typeSittingCapacity.errors?.['required']">
+                      Sitting Class Seats is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Type Sleeper Capacity Field -->
+                <div class="form-group">
+                  <label for="typeSleeperCapacity">Sleeper Class Seats</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="typeSleeperCapacity"
+                    [(ngModel)]="bus.typeSleeperCapacity"
+                    name="typeSleeperCapacity"
+                    [required]="true"
+                    #typeSleeperCapacity="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      typeSleeperCapacity.invalid && typeSleeperCapacity.touched
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="typeSleeperCapacity.errors?.['required']">
+                      Sleeper Class Seats is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Price Sitting Field -->
+                <div class="form-group">
+                  <label for="priceSitting">Sitting Class Price</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="priceSitting"
+                    [(ngModel)]="bus.priceSitting"
+                    name="priceSitting"
+                    [required]="true"
+                    #priceSitting="ngModel"
+                  />
+                  <div
+                    *ngIf="priceSitting.invalid && priceSitting.touched"
+                    class="text-danger"
+                  >
+                    <div *ngIf="priceSitting.errors?.['required']">
+                      Sitting Class Price is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Price Sleeper Field -->
+                <div class="form-group">
+                  <label for="priceSleeper">Sleeper Class Price</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="priceSleeper"
+                    [(ngModel)]="bus.priceSleeper"
+                    name="priceSleeper"
+                    [required]="true"
+                    #priceSleeper="ngModel"
+                  />
+                  <div
+                    *ngIf="priceSleeper.invalid && priceSleeper.touched"
+                    class="text-danger"
+                  >
+                    <div *ngIf="priceSleeper.errors?.['required']">
+                      Sleeper Class Price is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Departure Time Field -->
+                <div class="form-group">
+                  <label for="departureFromSource">Departure Time</label>
+                  <input
+                    type="time"
+                    class="form-control"
+                    id="departureFromSource"
+                    [(ngModel)]="bus.departureFromSource"
+                    name="departureFromSource"
+                    [required]="true"
+                    #departureFromSource="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      departureFromSource.invalid && departureFromSource.touched
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="departureFromSource.errors?.['required']">
+                      Departure Time is required.
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Arrival Time Field -->
+                <div class="form-group">
+                  <label for="arrivalOnDestination">Arrival Time</label>
+                  <input
+                    type="time"
+                    class="form-control"
+                    id="arrivalOnDestination"
+                    [(ngModel)]="bus.arrivalOnDestination"
+                    name="arrivalOnDestination"
+                    [required]="true"
+                    #arrivalOnDestination="ngModel"
+                  />
+                  <div
+                    *ngIf="
+                      arrivalOnDestination.invalid &&
+                      arrivalOnDestination.touched
+                    "
+                    class="text-danger"
+                  >
+                    <div *ngIf="arrivalOnDestination.errors?.['required']">
+                      Arrival Time is required.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-dark mt-3"
+              [disabled]="updateBusForm.invalid"
+            >
+              Update Bus
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" *ngIf="isShowAllBookingsVisible">
+    <div class="row">
+      <div class="col-12">
+        <h1>All Bookings</h1>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+          <!-- Loop through each booking -->
+          <div class="col mb-4" *ngFor="let booking of listOfBookings">
+            <div class="card">
+              <div class="card-body">
+                <h2>Booking ID: {{ booking.bookingId }}</h2>
+                <p><strong>User Name:</strong> {{ booking.userName }}</p>
+                <p><strong>Email:</strong> {{ booking.bookingEmail }}</p>
+                <p>
+                  <strong>Number of Bookings:</strong>
+                  {{ booking.noOfBookings }}
+                </p>
+                <p><strong>Bus ID:</strong> {{ booking.busId }}</p>
+                <p>
+                  <strong>Sitting Capacity:</strong>
+                  {{ booking.typeSittingCapacity }}
+                </p>
+                <p>
+                  <strong>Sleeper Capacity:</strong>
+                  {{ booking.typeSleeperCapacity }}
+                </p>
+                <p>
+                  <strong>Refund Amount:</strong>
+                  {{ booking.refund | number : "1.2-2" }}
+                </p>
+                <div
+                  *ngIf="booking.passengerList && booking.passengerList.length"
+                >
+                  <h3>Passenger List:</h3>
+                  <ul>
+                    <li *ngFor="let passenger of booking.passengerList">
+                      {{ passenger.passengerName }} -
+                      {{ passenger.passengerAge }} years old
+                      <p>{{ passenger.passengerPrefrence }}</p>
+                    </li>
+                  </ul>
+                </div>
+                <button class="btn btn-primary">Update Booking</button>
+              </div>
+            </div>
+          </div>
+          <!-- Loop ends here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
